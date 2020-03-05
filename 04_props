@@ -1,4 +1,4 @@
-video-4 1.24 te kaldim
+
 ----> class Component ve function Comoponent lerde props
         --> defaultProps(bisey yazmazsak bu gelir), innerstyle, farkli bir style yapma, img ile ilgili islemler, 
         Destructuring(kodlari uzun yazmak yerine kisaltiyorum), App.css kullanimi, button ve onClick,  
