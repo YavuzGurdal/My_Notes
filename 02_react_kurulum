@@ -1,0 +1,45 @@
+
+- terminali açıyoruz
+
+- Klasörü direk açmışsak problem yok işlemler başlayabiliriz.
+  Direk açmamışsak cd ...... Klasörün adını yazıyoruz. klasörün içine girmiş oluyoruz
+
+- React kurarken 2 yöntem var.
+    
+    Not : dosya adı kücük harflerden olusmalı
+
+  1- npx create-react-app reactkuracagımız_dosya_adı -->buraya yazdıgımız klasör adının içine react kurulur.
+    
+  2- npx create-react-app . yazarsak içinde bulundugumuz klasöre react kurulur.
+
+  ikisinin sonucunda da Happy Hacking cıkıyorsa islem basarılı demektir.
+
+- Yarn varsa; yarn start veya npm start yazarak proje baslatılır.
+
+  Compiled successfully yazısı islemin basarılı oldugunu gosterir ve localhost:3000 portundan browser da sayfayı acar.
+
+- icinde bulundugumuz klasorden cıkmak icin ctrl ve c tuslarina basiyoruz.Bu islem acik sayfayida kaptiyor.
+  Tekrar syfayi acmak istersek npm start veya yarn start yazmamiz lazim.
+
+- package.json : Node.js baglantısını bu dosya ile yapiyoruz.
+  bu dosyanin icindeki dependencies de projenin bagimli oldugu paket programlar ve Kutuphanelerin isimleri var.
+  Kurulum sirasinda otomatik olusuyor.
+  GitHub dan indirdigimiz projelerin bagimli oldugu paketleri package.json'dan ogreniyoruz.Bir projeyi GitHun'dan
+  indirdikten sonra Terminale npm install veya yarn install yazarak gerekli paketleri indirmis oluyoruz.
+
+- node_modules : Burada projede ihtiyac duydugumuz Node Package'lari bulunur. Kurulum sirasinda otomatik olusuyor. 
+
+- .gitignore : Projeyi GitHub'a yuklerken, yuklenmeyecek kisimi gosteriyor.
+
+- src klasoru : Hersey bunun icinde;
+  App.js: Butun Componentleri icine alan, cevreleyen ANA Component. Bu Functional Componenttir
+
+- *** Terminalden GitHub'a nasil yukleme yapilir: React Video-2 de 2.14 dakikada basliyor. yaklasik 10 dakika
+
+- *** Terminalden GitHub'a nasil yukleme yapilir, GitHubdan nasil proje indirilir, GitHub dan proje nasil 
+guncellenir. React Video-4 de 2.20 dakikada basliyor. yaklasik 12 dakika
+
+- *** Terminalden GitHub'da fork islemi nasil yapilir.
+React video-5 de 2.07 dakikada basliyor. yaklasik 20 dakika
+
+- *** Reactla alakali nerden ne ogrenebilirim: React Video-3 de 1.09 dakikada basliyor.

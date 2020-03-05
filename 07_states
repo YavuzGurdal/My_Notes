@@ -1,0 +1,104 @@
+--> *** states'ler sadece class Componentte calisir,kullanilabilir.
+
+-- sate'i her yerde kullanabiliriz. innerHTML,style vs...
+
+-- state kismi dinamiktir. anlik degisebilir. anlik degistigindede sadece Componentin degisen kismi degisir.
+mesela bir <p></p> tagine state verecegiz, state degistiginde <p> taginin innerHTML'i otomatik degisecek.
+state degistiginde React tekrar render ediyor.
+props'lar biraz daha sabittir ama state'ler dinamiktir. state'ler surekli degiskenlik gosterebilir.
+
+-- state'e server'dan data gelir state'e yuklenir, state'e yuklendigi anda App.js bi guncelleme oldugunu anlar 
+ve butun Component ve alt Component'lari state'deki bilgilerle tekrar render eder.
+
+-- *** state'de bir update oldugunda render kismi tekrar calisir.
+
+-- return ile ekrana ne yazacaksak onu cikti veriyoruz.
+Bundan dolayi Logic kisimlari return'den once halletmeliyiz. Yani render ile return arasinda.
+Cunku return ile render arasinda javascript kodlari yazildigi icin js'in butun esnekligini kullanabiliriz.
+
+-- propslarda disadiran bir etki vardir. yani disaridaki baska bir Componentten gelir. Kendi Componentimi
+olusturup degerleri baska Componentten atama yapiyordum.
+state'lerde disaridan bir etki yoktur. Hersey Componentin icinde gerceklesir.
+
+-- *** isDisplayed: !this.state.isDisplayed 
+    // Yani burda yapilacak islem; isDisplayed true ise false yapiyor,false ise true yapiyor. 
+    // ! isareti true ise false, false ise true yapiyor. yani toggle oluyor.
+    // ! islevi boolean degerler icin kullanabiliyoruz. true ve false icin
+    bu cok kullanacagimiz bi islem tipi.
+
+-- *** state degistiginde sayfa yeniden render edilir yani degisen state'in bulundugu Component ve alt 
+Componentler yeniden render edilir ve sadece degisen state veya state'ler degisir.
+Bundan dolayi state'in nerde bulunacagi ve nerde kullanilacagi onemlidir.
+
+-- state'in nerde bulunacagi nerde kullanilacagi onemli.
+
+-- ***** state her zaman objecttir. object mantigi ile bir key ve bir value'si vardir.
+
+-- Basit sekilde state asagidaki gibi yazilir ;
+
+            class App extends Component {
+
+                constructor (props) {
+                    super(props);
+                    this.state = { // state her zaman object'tir. ***** satate'lerin hepsi buraya yazilir...
+                    baslik: "React ogreniyorum",
+                    ders : "React JS"
+                    }
+                    this.stateDegistir = this.stateDegistir.bind(this) // stateDegistir fonksiyonunu App fonksiyonuna bagliyorum
+                    // Eger fonksiyonu arrow function yazsaydim bind etmeme gerek yoktu.o zaman otomatik bind edecekti.
+                }
+
+                stateDegistir () { // Bu bir function. O yuzden render'dan once yazdik.Bu function calisinca
+                                    asagidaki(return icindeki) icerik degisecek.
+                    this.setState({ // setState metod oldugu icin ()'leri var.
+                                // state sadece setState ile degistirilir.state object oldugu icin {} yazdik
+                        baslik: "HTML ogrendim",
+                        ders: "Bootstrap" 
+                    }) 
+                }
+                
+                // Burda aslinda constructor icindeki state'in degerini degistirmis oluyorum.
+                stateDegistir2 = () => { // Arrow function kullandigimiz icin bind etmemize gerek yok
+                    this.setState({
+                        baslik: "CSS ogreniyorum",
+                        ders: "CSS"
+                    })
+                }
+
+                render() {
+   
+                    return (
+                        <div>
+                            <h2>{this.state.baslik}</h2> // state'teki baslik ne ise onu ekranda gosterecek.
+                            <p>{this.state.ders}</p> // buraya yazarken key degerlerini yaziyorum.
+                            <button onClick={this.stateDegistir}>Change State</button>
+                            // bu buttona basinca icerik baslik: "HTML ogrendim", ders: "Bootstrap" olacak
+                            sekilde degisiyor
+
+                            <button onClick={this.stateDegistir2}>Change State - 2</button>
+                            // bu buttona basinca icerik baslik: "CSS ogreniyorum", ders: "CSS" olacak
+                            sekilde degisiyor
+
+                            { this.state.isDisplayed ? <p>{this.state.sehir}</p> : null}
+                            <button onClick={this.sehirGosterme}>Not show sehir</button>
+                        </div>
+                    );
+                }
+            }
+            export default App;
+
+-- { this.state.isDisplayed ? <p>{this.state.sehir}</p> : null} return icinde bu sekilde bisey yazabiliriz.
+
+-- *** isDisplayed: !this.state.isDisplayed // ! isareti true ise false, false ise true oluyor.yani toggle oluyor
+       // ! islevi boolean degerler icin kullanabiliyoruz. true ve false icin
+
+-- *** state'i constructor kullanmadan da yazabiliriz asagidaki sekilde;
+
+    class App extends Component {
+
+    state = {
+    persons: [
+        { name: "Yavuz", age: 35 },
+        { name: "Rıdvan", age: 33 }
+    ]
+    }

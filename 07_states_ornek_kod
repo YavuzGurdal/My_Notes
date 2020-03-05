@@ -1,0 +1,113 @@
+
+import React, { Component } from 'react';
+// import React from 'react';
+import './App.css';
+import Counter from './components/Counter';
+import Child from './components/Child';
+
+
+
+class App extends Component { // state ler 
+
+  constructor (props) {
+    super(props);
+    this.state = { // state her zaman object'tir. satate'lerin hepsi buraya yazilir
+        baslik: "React ogreniyorum",
+        ders: "React JS",
+        sehir: "Istanbul",
+        isDisplayed: true,
+        color: "lightblue",
+        isim: "Ayse"
+    }
+    this.stateDegistir = this.stateDegistir.bind(this) // stateDegistir fonksiyonunu App fonksiyonuna bagliyorum
+  }
+
+  stateDegistir () {
+    this.setState({  // satate sadece setState ile degistirilir. state object oldugu icin {} yazdik
+        baslik: "HTML ogrendim",
+        ders: "Bootstrap" 
+    }) 
+  }
+
+  stateDegistir2 = () => { // Arrow function kullandigimiz icin bind etmemize gerek yok
+    this.setState({
+        baslik: "CSS ogreniyorum",
+        ders: "CSS"
+    })
+  }
+
+  sehirGosterme = () => {
+    this.setState({  // state i degistirmek icin this.setState({}) seklinde yaziyoruz
+        // isDisplayed: false
+
+        isDisplayed: !this.state.isDisplayed // ! isareti true ise false, false ise true oluyor. yani toggle oluyor
+        // ! islevi boolean degerler icin kullanabiliyoruz. true ve false icin
+
+    }) 
+  }
+
+  changeBG = () => {
+    const newColor = this.state.color === 'lightblue' ? 'lightgreen' : 'lightblue';
+    this.setState({
+        color: newColor
+    })
+  }
+
+  changeIsim = (e) => {   
+    this.setState({
+       isim: e.target.value // input icine yazilan deger ne ise al ve isim'e ata
+    })
+  }
+
+  /* bu yukaridakinin daha dogru hali
+  changeIsim = e => this.state({ isim: e.target.value })
+  // isim: e.target.value --> bunun anlami input icine yazilan deger ne ise al ve isim'e ata
+  */
+
+
+  render() {
+
+    
+    return (
+     <div>
+
+        <div className="App" style={{backgroundColor: this.state.color}}>
+            <h2>{this.state.baslik}</h2>
+            <p>{this.state.ders}</p>
+            <button onClick={this.stateDegistir}>Change State</button>
+            <button onClick={this.stateDegistir2}>Change State - 2</button>
+
+            { this.state.isDisplayed ? <p>{this.state.sehir}</p> : null}
+            <button onClick={this.sehirGosterme}>Not show sehir</button>
+            <hr/>
+            <button onClick={this.changeBG}>Change Background { this.state.color === 'lightblue' ? 'lightgreen' : 'lightblue'}</button>
+
+        </div>
+
+      <Counter/>
+
+      <div className="App" style={{backgroundColor: "lightgreen"}}>
+
+            <input type="text" value={this.state.isim} onChange={this.changeIsim} />
+            <Child isim={this.state.isim}/>
+
+      </div>
+      
+     </div>
+    );
+  }
+}
+
+export default App;
+
+/*
+function App() {
+  return (
+    <div>
+       Hello World
+    </div>
+  );
+}
+
+export default App;
+*/

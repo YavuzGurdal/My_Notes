@@ -1,0 +1,161 @@
+
+-- COMPONENTS (BİLEŞENLER) : Kullanıcı arayüzünü ayrıştırarak birbirinden bağımsız ve tekrar kullanılabilen 
+parçalar oluşturmanızı sağlar.Bu sayede her bir parçayı, birbirinden izole bir şekilde düşünerek kodlayabilirsiniz.
+
+   Kavramsal olarak Components, JavaScript fonksiyonları gibidir. Bileşenler, “props” adındaki 
+girdileri opsiyonel olarak alırlar ve ekranda görüntülenecek React elementlerini geri döndürürler.
+
+-- Ana Componentteki DATA'yi Ana Componentten alt componentlere dagitmak icin propslari kullaniyorum.
+
+-- props fonksiyonun parametresi gibidir. Fonksiyonu 1 kere yazip farkli parametrelerle bircok kez kullandigimiz
+gibi propslarida ayni mantikla kullanacagiz.
+
+-- Component'lerin ilk Harfi büyük olmalıdır. App.js gibi. Boyle yazinca React bunun ozel bir Component
+oldugunu anliyor.
+
+-- Component icine yazdigimiz tag'lerin mutlaka kapanis isareti olmali bunu 2 sekilde yapabiliriz.
+   1. <image></image>, <img><img/> 
+   2. <img />, <br />, <hr /> vb... Componentlerin kendisininde bu sekilde kapnis isareti olmali.
+
+-- Componentlar icin src'nin altinda components klasoru olusturuyoruz ve componentlerimizi bu dosya icinde
+olusturup App.js componentina bagliyoruz.
+
+-- Componenti bir kez olusturup tekrar tekrar baska yerlerde kullaniyoruz.
+
+-- Componenti bi yerde import ederken verdigimiz isim componentin yeni ismi olur. Yani ayni isimlede yada 
+yeni bir isim vererekte import edebiliriz. Tabiki en güzeli ayni isimle import etmektir.
+
+-- Componenti yazdiktan sonra App.js componentinde import ediyoruz. Daha sonra import ettigimiz isimle App.js
+Componenti icinde kullaniyoruz. Componentin adini yaziyoruz ve icine yazacaklarimizi yaziyoruz.
+yazarken <Component /> seklinde yaziyoruz.
+
+-- İki tür Component vardir. Class Component ve Function component. Her iki bileşen de React’in bakış açısındanbirbirine eşittirler.
+ Class Component, Function component'e göre bazı ek özelliklere sahiptir.
+
+    1.Function Components:   
+      --> kısa yolu rcc(react class component). rcc yazıp entera basınca hazır yapı geliyor
+      --> Componentin return kısmını yazarken bir dış katman olmalı. bu bir <div> </div> veya baska bisey olabilir.
+      --> Sadece 1 tane bisey yazıyorsak dış katmana gerek yok. Kendisi dış katman olmus oluyor.
+      --> *** function Components oldugu icin function Welcome(props) parantez icine props yazmam gerekiyor.
+      --> return'un disini ust tarafini JS gibi kullanabilirim.Yani bu arada yazacagim kodlar JS kodlari olmali.
+          Burada JS ile function, degisken vs... yazabilirim.
+      --> JS kodlarini direk yazmak istersem return'den once yazmaliyim. return'un icinde yazmak istersem {} icinde yazmaliyim.
+
+        function Welcome(props) {
+            JS kodlari...
+            return (    // bu aradaki kodlar JSX kodlari.
+                <h1>Hello, {props.name}</h1>; 
+            );
+        }
+
+        export default Welcome; ---> bunu yazdıgım icin istedigim yerden import edebilirim
+
+    2.Class Function components: 
+      --> kısa yolu rfc(react function component). rfc yazıp entera basınca hazır yapı geliyor
+      --> Componentin return kısmını yazarken bir dış katman olmalı. bu bir <div> </div> veya baska bisey olabilir.
+      --> Sadece 1 tane bisey yazıyorsak dış katmana gerek yok. Kendisi dış katman olmus oluyor.
+      --> *** Class Component'te props yazarken this kullanmam gerekiyor
+      --> render ile return arasinda JS kurallari gecerlidir. JS kodlarini yazabilirim, degisken tanimlayabilirim,
+      fonksiyon tanimlayabilirim vs...
+      --> this. ifadesi class componente aittir. Functional Componentte this. ifadesi yoktur.
+      --> render() ile return arasini JS gibi kullanabilirim.Yani bu arada yazacagim kodlar JS kodlari olmali.
+          Burada JS ile function, degisken vs... yazabilirim.
+
+        class Welcome extends React.Component {
+            toplam = 3 + 2; // class'in elemani oldugu icin const,let,var yazmadik.
+
+            render() {
+
+                const toplamRender = 3 + 5; // burda const,let,var yazmamiz gerekiyor.
+
+                Buraya direk Js kodlarini yazabilirim.
+
+                return(  // Bu aradaki kodlar JSX olmali.
+                    <div>
+                        <p>toplam from Class : {toplam}</p>
+                        <p>toplam from render : {this.toplamRender}</p> 
+                        // class'dan geldigi icin this. yazdik.
+                        // this. yazarak class'in elemani oldugunu belirtmis olduk. Yani burda
+                        diyoruzki toplamRender class'a aittir.
+
+                        <h1>Hello, {this.props.name}</h1>;
+                    </div> 
+                )
+            }
+        }
+
+        export default Welcome; ---> bunu yazdıgım icin istedigim yerden import edebilirim
+    
+-- Componentleri kullanacagimiz yerde import etmemiz gerekiyor.
+Bunun kisa yolu var. Component adini yazarken cikan component adini tiklarsak otomatik import ediyor.*** burasi onemli
+
+-- Destructuring : kodu daha kisa yazmamizi sagliyor
+
+    1-Class Componentler icin;
+
+        class Wellcome extends Component {
+            render() {
+
+                const {isim, yas, sehir} = this.props;
+
+                return (
+                    <div>
+                        <h3>{isim}</h3>
+                        <h5>{yas}</h5>
+                        <p>{sehir}</p>
+                    </div>
+                )
+            }
+        }
+        export default Wellcome;
+
+    2-function Componentler icin;
+       Yontem 1:
+
+       function Merhaba({isim, yas, sehir}) {
+
+            return (
+                <div>
+                    <h3>{isim}</h3>
+                    <h5>{yas}</h5>
+                    <p>{sehir}</p>
+                </div>
+            )
+        }
+        export default Merhaba;
+
+        Yontem 2:
+
+        function Merhaba(props) {
+
+            const {isim, yas, sehir} = props;
+
+        geri kalan yerler ustteki ile ayni yaziliyor
+        Bu yontem Class Componenttekine cok benziyor
+
+-- Componentlerde RESİM nasil kullanilir 2 yontem var :
+   1.Yontem : src klasorunun icinde assets isminde yani bir klasor acariz. Resimleri bu klasorun icine koyariz.
+   Ana Componentte bir isim vererek import ediyorum
+     mesela; import resim from './assets/user.jpeg'; yaziyorum
+   Resimleri bu sekilde degiskene atayarak kullanabilirim. Bu degiskeni Ana Componentte props olarak yazarken
+   {} icinde yazmaliyim cunku degisken oldugundan dolayi.
+
+   Componentte :
+   Componentin adi Card.js --> <img src={props.source} alt="person"/> bu sekilde yazarsam
+   Ana Componentte : <Card source= {resim} /> seklinde yaziyorum.
+
+   2.Yontem : public icine yani bir klasor aciyorum mesela adi images olsun. Resmi bu klasorun icine koyuyoruz.
+   Resmin ismini userPublic.js koyuyorum. Bunu import etmeme gerek yok. Dosya yolunu gostererek kullanabilirim.
+   <Card source= {"/images/userPublic.js"} />  bu sekilde kullaniyoruz.
+        --> / puclic folder'ini gosterir.
+        --> Degisken oldugu icin {} icine yaziyorum
+        --> ' ' icine yaziyorum.
+
+    Bu yontem daha cok kullaniliyor cunku daha kolay ve daha esnek bir yapisi var.
+
+   Not: src ve alt attribute'dur. Bundan dolayi aralarina virgul koyulmaz.
+
+-- statefoul : icinde state olan Component
+   stateless : icinde state olmayan Component --> genelde cok fazla logic gerektirmez. Biseyleri yansitiyordur.
+   bunlara Dump da denilir. Genelde Logic gerektiren islem yoktur.
+   (bu konu React Video-6 da 2.01 dakikada)

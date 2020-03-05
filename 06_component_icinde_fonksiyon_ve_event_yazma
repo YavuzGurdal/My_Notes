@@ -1,0 +1,40 @@
+
+-- Component icinde function bu sekilde yaziliyor.
+
+    import React, {Component} from 'react';
+
+    class Button extends Component {
+
+        // bu classın fonksiyonu oldugu icin const,let vs... yazmama gerek yok
+        // bu fonksiyon arrow fonksiyon oldugu icin otomatik bundle yapiyor
+
+        handleClick = (e) => { // event in kisaltmasi. event hareket,action,click'leme olayi demektir.
+            console.log(e);
+            console.log(e.target); // button u hedefe aliyorum. e.target hedefe alinan html tag'ini ifade eder 
+                                   // mesela e.target.value deseydik HTML tag'inin degerini alacaktik.   
+
+            console.log(`${e.target.innerHTML} button clicked`) // button un uzerinde yazan textlere ulasiyorum
+            buttonun ustunde ne yaziyorsa onu console'a yazdiracak. yani innerHTML'ine ulasip orda yazani
+            console'a yaziyor.
+        }
+
+        render () {
+
+            return (
+                <button 
+                        onClick = {this.handleClick} // fonksiyondan sonra () koymuyorum cunku burda event 
+                        // var yani fonksiyon tiklama eventi olusunca calissin istiyorum. 
+                        // Eger () koyarsam fonksiyon hemen calisir.
+
+                        style={{padding:'10px 20px', margin:'0 10px'}}> // innerstyle bu sekilde yapiliyor
+                        {this.props.text} // class tipi function oldugu icin this. yaziyoruz.
+                </button>
+            )
+        }
+
+    }
+    // defaultProps buraya yazilir
+    // burasi default props. bu sekilde yaziliyor
+    Button.defaultProps = {text: 'Iam a button'}
+
+    export default Button;

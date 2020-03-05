@@ -1,0 +1,170 @@
+video-4 1.24 te kaldim
+----> class Component ve function Comoponent lerde props
+        --> defaultProps(bisey yazmazsak bu gelir), innerstyle, farkli bir style yapma, img ile ilgili islemler, 
+        Destructuring(kodlari uzun yazmak yerine kisaltiyorum), App.css kullanimi, button ve onClick,  
+--> props la ilgili ornek yap. React video-3 te 2.05 te ornek var.
+
+- Bir nevi parametrelerdir. Componentler arasinda degiskenleri tasirlar. yukari veya asagi yonlu olarak.
+propslar sayesinde bir nevi componentlere parametre atamis oluyoruz.
+
+- props ismi property den geliyor. <MessageBox pName="Yavuz" pAge="35" /> burda kullandigimiz pName
+bir attribute'dur.
+
+- App.js icinde Component'in icinde yazdigimiz props degerlerini Component icinde tekrar yakaliyoruz.
+  Mesela App.js icinde asagiadaki gibi yazilan kod;
+  
+    function App() {
+      return (
+        <div>
+            <MessageBox pName="Yavuz" pAge="35" />
+            <MessageBox pName="Gamze" pAge="32" />
+            <MessageBox pName="Merve" pAge="7" />
+            <MessageBox pName="Fatih" pAge="6" />
+        </div>
+      );
+    }
+    export default App;
+
+
+    MessageBox.js Componentinde yazilan kod;
+
+    function MessageBox(props) {
+        return (
+            <div>
+                Hello I am {props.pName} and I am {props.pAge} years old.
+            </div>
+        )
+    }
+    export default MessageBox;
+
+    ***** Bu kodlarin sonucunda ekranda alinan cikti su sekilde olacaktir; 
+
+    Hello I am Yavuz and I am 35 years old.
+    Hello I am Gamze and I am 32 years old.
+    Hello I am Merve and I am 7 years old.
+    Hello I am Fatih and I am 6 years old.
+
+    App.js icindeki MessageBox componenti icinde yazdigimiz pName ve pAge degerlerini MessageBox Componentinde
+    yakalamis olduk. Bu islemi component ve propsla yaptik. Eger Ana Componentte yazdigimiz mesela pName="Yavuz"
+    yazdik diyelim, bunu yani pName'yi Component icinde kullanmazsak herhangi bi cikti alamayiz. 
+    Componenti 1 kere yazdik ama 4 kez kullandik. Bu islemleri props vasitasiyla yaptik.
+
+    Eger bu Component, Class Comoponent olasaydi o zaman this.props.pName ve this.props.pAge olacakti.
+
+- *** props yapisi object yapisi ile aynidir.
+yani {key:valu1, key2:value2} gibi
+
+- Comoponente style eklenmez. style Comoponent icindeki HTML tag'lerine eklenir. Ana Componentte yazdigimiz
+Componentin icine style yazilmaz. style Componenti olusturdugumuz yerde HTML tag'leri icinde yazilir.
+
+- style eklemenin 3 farkli yolu var.
+    1. App.css ile
+    2. innerstyle ile; <button style{{padding:"20px", margin:"5px 10px"}}>{this.props.text}</button>
+    style yazilirken {{}} bu sekilde icice 2 parantez aciyoruz ve icini yazarken object mantigi ile yaziyoruz.
+    object mantiginda son yazilan degerden sonra , yada ; konulmaz yoksa hata verir.
+    3. degisken atama yontemi ile;
+       <h2 style{h2style}></h2> bu sekilde yazdiktan sonra export default tan once yaziyoruz.
+
+       const h2style = {  // bu sekilde object mantiginda(elementler arasinda virgul olmali)                     
+           width : "200px",        //js kodlari(bas harf kucuk 2.kelimenin bas harfi buyuk)seklinde yaziyorum.
+           textAlign : "center"
+       }
+
+--->  default props yazabiliriz. default parametre kullanabiliriz. Ana Componentte Componenti yazip herhangi birsey
+girilmezse default degerler gelir.
+
+                    ***** Class Component
+                    class Componentte props yazarken this.props.degisken yaziyoruz.
+
+                    import React, { Component } from 'react'
+
+                    class Wellcome extends Component {
+
+                        render() {
+
+                            console.log(this.props);
+
+                            return (
+                                <div>
+                                    <h3>{this.props.isim}</h3>
+                                    <h5>{this.props.yas}</h5>
+                                    <p>{this.props.sehir}</p>
+                                </div>
+                            )
+                        }
+                    }
+
+                    // defaultProps buraya yani Componentin sonuna yazilir.
+                    // burasi default props. bu sekilde yaziliyor
+                    Wellcome.defaultProps = {isim:'Yavuz', yas:'35', sehir:'Isparta'}
+
+                    export default Wellcome;
+
+
+                    ***** function Component
+
+                    import React from 'react'
+
+                    function Merhaba(props) { // function component oldugu icin () icine props yazmaliyim.
+
+                        console.log(props);
+                        // return'e kadar bu araya js kodu yazabiliriz
+
+                        return (
+                            <div>
+                                <h3>{props.isim}</h3>
+                                <h5>{props.yas}</h5>
+                                <p>{props.sehir}</p>
+                            </div>
+                        )
+                    }
+
+                    // defaultProps buraya yani Componentin sonuna yazilir. 
+                    // burasi default props. bu sekilde yaziliyor
+                    Merhaba.defaultProps = {isim:'Gamze', yas:'32', sehir:'Balıkesir'}
+
+                    export default Merhaba;
+
+-- Destructuring : kodu daha kisa yazmamizi sagliyor
+
+    1-Class Componentler icin;
+
+        class Wellcome extends Component {
+            render() {
+
+                const {isim, yas, sehir} = this.props;
+
+                return (
+                    <div>
+                        <h3>{isim}</h3>
+                        <h5>{yas}</h5>
+                        <p>{sehir}</p>
+                    </div>
+                )
+            }
+        }
+        export default Wellcome;
+
+    2-function Componentler icin;
+       Yontem 1:
+
+       function Merhaba({isim, yas, sehir}) {
+
+            return (
+                <div>
+                    <h3>{isim}</h3>
+                    <h5>{yas}</h5>
+                    <p>{sehir}</p>
+                </div>
+            )
+        }
+        export default Merhaba;
+
+        Yontem 2:
+
+        function Merhaba(props) {
+
+            const {isim, yas, sehir} = props;
+
+        geri kalan yerler ustteki ile ayni yaziliyor
+        Bu yontem Class Componenttekine cok benziyor

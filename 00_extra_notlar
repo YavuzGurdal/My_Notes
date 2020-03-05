@@ -1,0 +1,18 @@
+
+--> Boilerplate Code Nedir?
+Boilerplate esasında yazılımla sınırlandırılamayacak bir tanım. Örneğin, üyelik ve gizlilik sözleşmeleri de 
+boilerplate olarak ifade edilebilir. Sadece gerekli alanlar değiştirilir, gerekli ise güncellemeler yapılır 
+ancak genel olarak şablon aynıdır.
+
+Bilgisayar programcılığında ise, boilerplate code (ya da kısaca boilerplate) pek çok yere eklenen (include) ve
+genel olarak hiç ya da çok az değişikliğe uğrayan kod bölümlerini ifade eder. Basit işlevsellik için çok fazla
+kodun yazılması gerektiği durumlarda sıklıkla tercih edilirler. Pek çok dil ve yazılım projesi için farklı
+amaçlara yönelik olarak hazırlanmış şablonlar ve hatta özelleştirilebilen şablon motorları mevcuttur. 
+Boilerplate bir projenin çerçevesi olarak da tanımlanabilir. Örneğin, aşağıdaki boilerplate, temel bir HTML
+sayfa şablonu olarak kullanılabilir:
+
+Bir geliştirici çalıştığı projeler için kendi boilerplate code’larını oluşturup benzer gereksinimlerde
+başlangıç sürecini kısaltmak adına kullanabilir, geliştirici takımındaki diğer arkadaşlarıyla paylaşabilir.
+Bu sayede, gereksiz vakit harcayan bir süreç ortadan kaldırılmış ve projenin çerçevesi herkes için ortak bir
+şekilde oluşturulmuş olur. Boilerplate kapsamı yinelenen iş ve özelleştirme gereksinimine bağlı olarak
+genişletilip daraltılabilir. DRY (Don’t repeat yourself) felsefesine oldukça uygun bir yaklaşımdır.z

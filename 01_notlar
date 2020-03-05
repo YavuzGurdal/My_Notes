@@ -1,0 +1,251 @@
+--> İyi bir React Developer olmak icin :
+    1. Component Menagement Yani nerde hangi componenti kullanacagim 
+    2. state Menagement Yani nerde hangi state 'i kullanacagim 
+    bunlari iyi bir sekilde yapabiliyor olmak gerekir.
+
+- convention : ??? ortak dusunce, duzen
+
+- React Dom isini bana birakin diyor. Yani Dom kisimlarini React otomatik kendisi yapiyor.
+
+- 1.React singlePage application 'dir. Yani hersey 1 sayfada olup biter.
+  2.React Frontend ile backend 'i ayirmamizi sagliyor.
+
+- HTML kodlarindaki class larin karsiligi className olarak kullaniliyor.
+
+- Ekranda gorecegim kisim App.js icindeki return kisminin icindeki kisim.
+
+- JSX i js kodlarinin icine gomulmus HTML olarak dusunebiliriz. JS icindeki HTML tag'leri.
+Bu kisim return'un icinde yazilir
+
+- JSX icine degisken yazarken {} parantezler icinde yazmam gerekiyor. Yani aslinda JSX icinde JS kodu olan 
+ne varsa { } icine yazmam gerekiyor. JSX icinde JS kodlari { } icinde yazilir.
+
+- Reactta mutlaka bir acilis ve bir kapniz <tag></tag> 'i olmali. HTML'deki <img> tagi gibi olanlarda da kapnis
+yapmak gerkiyor. <br/>, <hr/>, <img/>, <input/> vb... HTML kodlarimizi React'a atarsak buna dikkat etmeliyiz.
+
+- React'ta class ismi classComponente verilir. HTML'deki gibi class'i className ile veriyoruz.
+
+- ternary operator. 1 satirlik if kosulu. condition kisimlarina null da yazilabilir
+  {condition ? condition true ise yapilacak olan islem : condition false ise yapilacak olan islem} JSX icinde
+  kullanacaksam {} icinde kullanmam gerekiyor.
+  
+- JS de eventlerin bas harfi buyuk olmali. onClick, onChange vb...
+
+- function makeDoggy (e) { // e event demek, yani burda e click eventi demek.
+    e.target.src = 'http....' // e.target: click'lendigi HTML <tag>'i. Yani bunu hangi tag icin yazmissam 
+    onu hedefime almis oluyorum.
+
+    e.target.setAttribute ("attributenin kendisi", "attribute'un yeni degeri")
+}
+
+const kitty =  <img 
+                    src = "http..."
+                    alt = "kitty"
+                    onClick = {makeDoggy()} Bu sekilde yazarsak ()'den dolayi compile edildiginde calissin demek
+                    oluyor. Bu sekilde kullanacagimiz yerlerde olacak ama Burda hatali kullanim oluyor. Cunku
+                    burda istedigimiz fonksiyonun click yapinca calismasi. Bu yuzden dogru kullanim ()'siz olmasi.
+
+                    onClick = {makeDoggy} onClick ozelligi oldugundan dolayi yani tiklayinca calismasi icin
+                    () kullanmiyoruz. Yani bir evente baglamissak () olmayacak.
+
+               />
+
+  1.Yontem : Attribute'un kendini hedef aliyorum. Yani src attribute'unu degistiriyorum. Yukaridaki kodda
+  aslinda dedigim su : img'ye tiklandiginda src'yi yazdigim yeni src ile degistir.
+  2.Yontem : setAttribute yontemi
+
+- fonksiyonlari kullanirken bir event varsa mesela click event'i gibi o zaman fonksiyonu kullandigimiz yerde
+(dikkat!!! tanimlarken degil) () parantez yazmayacagiz. () yazarsak event olmadan calisir. event yoksa veya 
+fonksiyona deger gondereceksek () kullanmamiz gerekiyor. () kullanmissak fonksiyon okundugu anda calisiyor.
+
+- Arrow function :
+  sayiUret = (val) => {   kod tek satir oldugu icin sayiUret = (val) => val * val; seklinde yazabilirim.
+      return val * val;
+  }
+
+- map() functions :
+  1.Bu fonksiyon array'in butun elemanlarini otomatik olarak tek tek dolasir.
+  2.Ve parantezin icindeki islemi butun array elemanlarina uygular.
+  *** Not:map() function kullaniyorsak mutlaka key vermemiz gerekiyor.
+
+    const links = ["Home", "Services", "Abouy Us"];
+    const list = (<ul>
+                    { links.map( (item,index) => { // item her dongude arrayin elemenlarinin degerini alacak
+                                               // links.map() yazdigimiz icin map() links arrayini dolasip () 
+                                               icine yazdigimiz fonksiyona gore her array elemani icin bu
+                                               islemi yapacak.
+                                               // mesela ilk dongude item "Home" olacak.
+                                               // index her dongude arrayin elemenlarinin index numarasini alacak
+                                               // mesela ilk dongude index 0 (sifir) olacak.
+                        return <li key={index}>{item}</li>  
+                                            // map() arrayi dolasip array elemanlarini ul icinde listeleyecek
+                                            // React her eleman icin unique key olmasini istiyor.key degeri vermemiz
+                                            degisiklik yaparken dinamik degisiklik yapmamizi sagliyor.
+                                            // burda index numaralarini key degeri olarak atadik. isteseydik
+                                            key degeri olarak baska degerlerde verebiliridk.
+                    })}               
+                </ul>)
+  
+
+  Bunu baska bi sekildede yazbilirdik ; yukaridaki ile ayni sekilde calisir.
+    const links = ["Home", "Services", "Abouy Us"];
+    const liElem = links.map( (item,index) => { 
+                                                return <li key={index}>{item}</li>                                              
+                                              })
+
+    const list = (<ul> {liElem} </ul>)
+
+- css kismindaki yazacaklarimiz klasik css formatinda yazilir.
+
+- bactick ` ` icinde degiskeni ${degisken} bu sekilde yaziyoruz. Backtick JSX kisminda yazacaksak { } icinde
+yazmamiz gerekiyor. Cunku bu da JS kodu.
+
+- Component'lerin ilk Harfi büyük olmalıdır.
+
+- Componentin return kısmını yani JSX kismini yazarken bir dış katman olmalı.Yazdiklarimizi cover etmeliyiz.
+Yani bir ana tag olmali bu bir <div> </div> veya baska bisey olabilir.Sadece 1 tane <tag></tag> yazıyorsak dış 
+katmana gerek yok.Kendisi dış katman olmus oluyor.
+
+- Bir ust Klasore cıkmak icin ../ kullanmak gerekiyor
+
+- js arrayle alakali az bir anlatim mevcut. React Video-6'da 1.22 dakikada.
+
+- Componentleri kullanacagimiz yerde import etmemiz gerekiyor.
+Bunun kisa yolu var. Component adini yazarken cikan component adini tiklarsak otomatik import ediyor.*** burasi onemli
+
+- Component icinde return icinde innerstyle bu sekilde yapilir. js kodu seklinde ve object mantigi ile
+<div style= {{width:"200px", height:"300px", border:"1px solid black"}}> </div>
+
+- *** Destructuring
+    1-Class Componentler icin;
+
+        class Wellcome extends Component {
+            render() {
+
+                const {isim, yas, sehir} = this.props;
+
+                return (
+                    <div>
+                        <h3>{isim}</h3>
+                        <h5>{yas}</h5>
+                        <p>{sehir}</p>
+                    </div>
+                )
+            }
+        }
+        export default Wellcome;
+
+    2-function Componentler icin;
+       Yontem 1:
+
+       function Merhaba({isim, yas, sehir}) {
+
+            return (
+                <div>
+                    <h3>{isim}</h3>
+                    <h5>{yas}</h5>
+                    <p>{sehir}</p>
+                </div>
+            )
+        }
+        export default Merhaba;
+
+        Yontem 2:
+
+        function Merhaba(props) {
+
+            const {isim, yas, sehir} = props;
+
+        geri kalan yerler ustteki ile ayni yaziliyor
+        Bu yontem Class Componenttekine cok benziyor
+
+- Class Componentlerin icinde direk fonksiyon yazabiliyoruz. let,var,const yazmamıza gerek yok.
+cunku direk class'in fonksiyonu oluyor.
+
+- arrow function
+    class Button extends Component {
+        // bu classın fonksiyonu oldugu icin const,let vs... yazmama gerek yok
+        // bu fonksiyon arrow fonksiyon oldugu icin otomatik bundle yapiyor
+        handleClick = (e) => { // event in kisaltmasi
+            console.log(e);
+            console.log(e.target); // button u hedefe aliyorum    
+            console.log(`${e.target.innerHTML} button clicked`) // button un uzerinde yazan textlere ulasiyorum
+        }
+
+        render () {
+
+            return (
+                <button 
+                    onClick = {this.handleClick}
+                    style={{padding:'10px 20px', margin:'0 10px'}}>
+                        {this.props.text}
+                </button>
+                // innerstyle bu sekilde yapiliyor
+            )
+        }
+    }
+
+- Nested : ic ice demek
+
+- degiskenleri yazarken(tanimlarken degil) {} icine yaziyoruz.
+
+-- Destructuring : kodu daha kisa yazmamizi sagliyor
+
+    1-Class Componentler icin;
+
+        class Wellcome extends Component {
+            render() {
+
+                const {isim, yas, sehir} = this.props;
+
+                return (
+                    <div>
+                        <h3>{isim}</h3>
+                        <h5>{yas}</h5>
+                        <p>{sehir}</p>
+                    </div>
+                )
+            }
+        }
+        export default Wellcome;
+
+    2-function Componentler icin;
+       Yontem 1:
+
+       function Merhaba({isim, yas, sehir}) {
+
+            return (
+                <div>
+                    <h3>{isim}</h3>
+                    <h5>{yas}</h5>
+                    <p>{sehir}</p>
+                </div>
+            )
+        }
+        export default Merhaba;
+
+        Yontem 2:
+
+        function Merhaba(props) {
+
+            const {isim, yas, sehir} = props;
+
+        geri kalan yerler ustteki ile ayni yaziliyor
+        Bu yontem Class Componenttekine cok benziyor
+
+- Not: src ve alt attribute'dur. Bundan dolayi aralarina virgul koyulmaz.
+
+- snippets : 
+
+- initial (ilk,bastaki,baslangic) value : baslangic degeri
+
+- function Component, classComponente gore daha hizlidir.
+
+- constructor snippet'i rconst.
+
+- onChange event : herhangi bir degisiklik oldugunda hemen degisikligi yansitiyor. Mesela onChange eventini
+input'ta kullanalim. inputun icine bir harf yazildiginda bunu algilayip gondermesi gereken yere gonderiyor.
+Yani yapilan degisiklikleri aninda isleme aliyor.
+
+
+   

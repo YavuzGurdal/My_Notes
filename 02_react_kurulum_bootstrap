@@ -1,0 +1,16 @@
+-- terminalde + tusuna basarak yeni terminal sayfasi aciyoruz. Projenin icinde olup olmadigimizi kontrol
+ediyoruz.
+Eger projede degilsek cd projeismi yazip projeye gitmemiz lazim.
+
+--  sonra terminale (npm install react-bootstrap bootstrap) yazip entera basiyoruz
+    biraz daha kisasi (npm -i react-bootstrap bootstrap)
+   
+    yarn kullaniyorsak (yarn add react-bootstrap bootstrap) seklinde yazmamiz gerek.
+
+    yukleyip yuklemedigimizi kontrol etmek icin package.json'a gidip bakiyoruz
+    dependencies'in icinde yuklediklerimiz varsa problem yok.
+
+    Sonra Stylesheets'daki kodu src/index.js veya App.js'e yapistir.
+
+-- React ta link verirken "/" bu ana sayfa demek. Landing page olarakta adlandirabiliriz.
+   baska bisey icin "/movies" seklinde yaziyoruz.

@@ -1,0 +1,112 @@
+
+1 --- map() functions : (bununla ilgili anlatim React Video-6'da 1.44 dakida var)
+  1.map() arraye veya object'ye uygulanir.
+  2.array veya object'ye ulastiktan sonra .map() fonksiyonunu cagiriyoruz.
+  3.map() iki parametresi vardir. 1.parametre value 2.parametre index numarasidir.  
+  value ve index. genelde value->item olarak, index->i olarak kullanilir.
+  item o anki array elemaninin degerini, index o anki array elemaninin index numarasini verir.
+
+    map((item, i) => {
+        Buraya yapilacak islemleri yaziyorum 
+    })
+  4.Bu fonksiyon array'in butun elemanlarini otomatik olarak tek tek dolasir.
+  5.Ve parantezin icindeki islemi butun array elemanlarina uygular.
+  6.Ve herbir calistigi andaki item; o andaki array elemaninin degerini, 
+  index; o andaki array elemaninin index numarasini verir.
+
+  ***** Burdaki Örnekte Bir map() fonksiyonun calisma seklini gorecegiz ;
+        --> this.state.persons yazarak arraye ulasiyoruz.
+        --> this.state.persons.map((item, index) => { // koseli parantez kullanirsak return yazmaliyiz.
+                return(
+                burayada yapilacak islemler
+                )
+            })
+            BUDA AYNI İSLEMİ yaparken
+            this.state.persons.map((item, index) =>
+                burayada yapilacak islemler
+            )
+        --> Burdan sonra map() fonksiyonu arrayin butun elemanlarini dolasarak arrow function'un icinde
+        yazmis oldugumuz islemleri her array elemani icin sira ile yapar.
+        --> this.state.persons.map((item, index) =>
+                    <PersonCard // bu Component.
+                        key={index}
+                        // key olarak simdilik index numarasini verdik. 
+                        name={item.name} // bu bir props. Burda islem yaptigim array elemanindaki key'i name
+                                         // olan degere ulasiyorum.
+        *****       *** Yukarida item ile ulastigim array elemanlari, bu arrayde elemanlar object oldugu 
+*****   Burasi      icin item object, sonra yazdigim item.name ile object icindeki key'i name olan deger 
+*****   Önemli !!!  ulasiyorum.
+        *****           Ayni sekilde asagidada item.age ile abject icindeki key'i age olan degere ulasiyorum.
+
+                        age={item.age}   // bu bir props. Burda islem yaptigim array elemanindaki key'i age
+                                         // olan degere ulasiyorum.
+                    />
+                );
+            Bu kodla map() fonksiyonu, icinde yukarida yazdigimiz degerler olan <PersonCard/> adinda bir 
+            Component uretecek.
+
+        class App extends Component {
+
+            state = {
+                persons: [
+                    { name: "Yavuz", age: 35 },
+                    { name: "Rıdvan", age: 33 },
+                    { name: "Gamze", age: 32 }
+                ]
+            }
+
+            render() {
+
+                let personsOutput = this.state.persons.map((item, index) =>
+                    <PersonCard // bu Component.
+                        key={index}
+                        // key olarak simdilik index numarasini verdik. 
+                        // bunu daha cok uniq baska degerler veriyoruz
+
+                        name={item.name} // bu bir props
+                        age={item.age} // bu bir props
+                    />
+                );
+
+                return (
+                    <div className="App">
+                        {personsOutput}
+                    </div>
+                );
+            }
+        }
+        // map() de {} kullanirsak return kullanmamiz gerekir.
+        // yukarida index kullanmasak da olur cunku item'in icinde var.
+        // return'ün ici JSX kodudur
+
+        export default App;
+
+
+  *** Not:map() function kullaniyorsak mutlaka key vermemiz gerekiyor.
+
+    const links = ["Home", "Services", "Abouy Us"];
+    const list = (<ul>
+                    { links.map( (item,index) => { // item her dongude arrayin elemenlarinin degerini alacak
+                                               // links.map() yazdigimiz icin map() links arrayini dolasip () 
+                                               icine yazdigimiz fonksiyona gore her array elemani icin bu
+                                               islemi yapacak.
+                                               // mesela ilk dongude item "Home" olacak.
+                                               // index her dongude arrayin elemenlarinin index numarasini alacak
+                                               // mesela ilk dongude index 0 (sifir) olacak.
+                        return <li key={index}>{item}</li>  
+                                            // map() arrayi dolasip array elemanlarini ul icinde listeleyecek
+                                            // React her eleman icin unique key olmasini istiyor.key degeri vermemiz
+                                            degisiklik yaparken dinamik degisiklik yapmamizi sagliyor.
+                                            // burda index numaralarini key degeri olarak atadik. isteseydik
+                                            key degeri olarak baska degerlerde verebiliridk.
+                    })}               
+                </ul>)
+  
+
+  Bunu baska bi sekildede yazbilirdik ; yukaridaki ile ayni sekilde calisir.
+    const links = ["Home", "Services", "Abouy Us"];
+    const liElem = links.map( (item,index) => { 
+                                                return <li key={index}>{item}</li>                                              
+                                              })
+
+    const list = (<ul> {liElem} </ul>)

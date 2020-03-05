@@ -1,0 +1,27 @@
+-- children prop Component'in kendinde degil kullandigimiz yerde olusturulur.
+
+--  Ana Componentte bu sekilde yaziyoruz :
+
+        <PersonBox pName="Yavuz" pAge="35">
+            Hello from by Yavuz. Burası children props
+        </PersonBox>
+    *** children props olmasi icin yukaridaki gibi tag'leri acma ve kapama tag'leri seklinde yaziyoruz.
+    bu tag'lerin arasina yazdiklarimiz children props oluyor.
+
+    PersonBox Componentinde bu sekilde yaziyoruz :
+        
+        function PersonBox(props) {
+            return (
+              <div>
+                  <p>
+                    I am {props.pName} {/*Math.floor(Math.random() * 20 + 20) */} and I am {props.pAge} yaers old. This is my Message!
+                  </p> 
+          
+                  <h4>{props.children}</h4>         
+              </div>
+            )
+        }
+
+    *** Bu sekilde children props'lari kullaniyoruz.
+
+        

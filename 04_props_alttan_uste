@@ -1,0 +1,12 @@
+-- asagidan yukariya dogru data'lari gonderirken bu islemi eventler(onClick, onChange vb...) 
+ve function'larla yapmamiz gerekiyor.
+
+-- asagidan yukariya gonderdigimiz datayi state'te degistirmis olacagiz bundan dolayi state'ten asagiya dogru
+kendi otomatik degismis olacak.
+
+-- event'lere fonksiyon atamamiz gerekiyor. Cunku yapacaklari isi function vasitasi ile yapiyorlar.
+
+-- onChange{changeHandler} : burda onChange event'ine changeHandler function'u atadim. Fakat () koymadim.
+eger hemen islem yapilacaksa () koyuyorum. ama tetikleme olacaksa () koymuyorum.
+
+-- Data Componentler arasinda yukariya da olsa asagiya da olsa hep propslarla gonderilir.
