@@ -5,10 +5,10 @@
 
 - convention : ??? ortak dusunce, duzen
 
-- React Dom isini bana birakin diyor. Yani Dom kisimlarini React otomatik kendisi yapiyor.
+- React, Dom isini bana birakin diyor. Yani Dom kisimlarini React otomatik kendisi yapiyor.
 
-- 1.React singlePage application 'dir. Yani hersey 1 sayfada olup biter.
-  2.React Frontend ile backend 'i ayirmamizi sagliyor.
+- 1.React singlePage application'dir. Yani hersey 1 sayfada olup biter.
+  2.React Frontend ile backend'i ayirmamizi sagliyor.
 
 - HTML kodlarindaki class larin karsiligi className olarak kullaniliyor.
 
@@ -20,8 +20,9 @@ Bu kisim return'un icinde yazilir
 - JSX icine degisken yazarken {} parantezler icinde yazmam gerekiyor. Yani aslinda JSX icinde JS kodu olan 
 ne varsa { } icine yazmam gerekiyor. JSX icinde JS kodlari { } icinde yazilir.
 
-- Reactta mutlaka bir acilis ve bir kapniz <tag></tag> 'i olmali. HTML'deki <img> tagi gibi olanlarda da kapnis
-yapmak gerkiyor. <br/>, <hr/>, <img/>, <input/> vb... HTML kodlarimizi React'a atarsak buna dikkat etmeliyiz.
+- Reactta mutlaka bir acilis ve bir kapanis <tag></tag> 'i olmali. HTML'deki <img> tagi gibi olanlarda da kapanis
+yapmak gerkiyor. <br/>, <hr/>, <img/>, <input/> vb... 
+HTML kodlarimizi React'a atarsak buna dikkat etmeliyiz.Yoksa hata ile karsilasiriz.
 
 - React'ta class ismi classComponente verilir. HTML'deki gibi class'i className ile veriyoruz.
 
@@ -46,7 +47,7 @@ const kitty =  <img
                     burda istedigimiz fonksiyonun click yapinca calismasi. Bu yuzden dogru kullanim ()'siz olmasi.
 
                     onClick = {makeDoggy} onClick ozelligi oldugundan dolayi yani tiklayinca calismasi icin
-                    () kullanmiyoruz. Yani bir evente baglamissak () olmayacak.
+                    () parantez kullanmiyoruz. Yani bir evente baglamissak () olmayacak.
 
                />
 
@@ -59,7 +60,7 @@ const kitty =  <img
 fonksiyona deger gondereceksek () kullanmamiz gerekiyor. () kullanmissak fonksiyon okundugu anda calisiyor.
 
 - Arrow function :
-  sayiUret = (val) => {   kod tek satir oldugu icin sayiUret = (val) => val * val; seklinde yazabilirim.
+  sayiUret = (val) => {   // kod tek satir oldugu icin sayiUret = (val) => val * val; seklinde yazabilirim.
       return val * val;
   }
 
@@ -71,7 +72,7 @@ fonksiyona deger gondereceksek () kullanmamiz gerekiyor. () kullanmissak fonksiy
     const links = ["Home", "Services", "Abouy Us"];
     const list = (<ul>
                     { links.map( (item,index) => { // item her dongude arrayin elemenlarinin degerini alacak
-                                               // links.map() yazdigimiz icin map() links arrayini dolasip () 
+                                               // links.map() yazdigimiz icin map(), links arrayini dolasip () 
                                                icine yazdigimiz fonksiyona gore her array elemani icin bu
                                                islemi yapacak.
                                                // mesela ilk dongude item "Home" olacak.
@@ -87,7 +88,7 @@ fonksiyona deger gondereceksek () kullanmamiz gerekiyor. () kullanmissak fonksiy
                 </ul>)
   
 
-  Bunu baska bi sekildede yazbilirdik ; yukaridaki ile ayni sekilde calisir.
+  Bunu baska bi sekilde de yazabilirdik ; yukaridaki ile ayni sekilde calisir.
     const links = ["Home", "Services", "Abouy Us"];
     const liElem = links.map( (item,index) => { 
                                                 return <li key={index}>{item}</li>                                              
@@ -97,14 +98,14 @@ fonksiyona deger gondereceksek () kullanmamiz gerekiyor. () kullanmissak fonksiy
 
 - css kismindaki yazacaklarimiz klasik css formatinda yazilir.
 
-- bactick ` ` icinde degiskeni ${degisken} bu sekilde yaziyoruz. Backtick JSX kisminda yazacaksak { } icinde
+- bactick ` ` icinde degiskeni ${degisken} bu sekilde yaziyoruz. Backtick'i JSX kisminda yazacaksak { } icinde
 yazmamiz gerekiyor. Cunku bu da JS kodu.
 
 - Component'lerin ilk Harfi büyük olmalıdır.
 
 - Componentin return kısmını yani JSX kismini yazarken bir dış katman olmalı.Yazdiklarimizi cover etmeliyiz.
-Yani bir ana tag olmali bu bir <div> </div> veya baska bisey olabilir.Sadece 1 tane <tag></tag> yazıyorsak dış 
-katmana gerek yok.Kendisi dış katman olmus oluyor.
+Yani bir ana tag olmali bu bir <div> </div> veya <Fragment> </Fragment> veya baska bisey olabilir.
+Sadece 1 tane <tag></tag> yazıyorsak dış katmana gerek yok.Kendisi dış katman olmus oluyor.
 
 - Bir ust Klasore cıkmak icin ../ kullanmak gerekiyor
 
@@ -241,7 +242,7 @@ cunku direk class'in fonksiyonu oluyor.
 
 - function Component, classComponente gore daha hizlidir.
 
-- constructor snippet'i rconst.
+- constructor'in snippet'i rconst.
 
 - onChange event : herhangi bir degisiklik oldugunda hemen degisikligi yansitiyor. Mesela onChange eventini
 input'ta kullanalim. inputun icine bir harf yazildiginda bunu algilayip gondermesi gereken yere gonderiyor.
